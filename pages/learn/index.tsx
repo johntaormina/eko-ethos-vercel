@@ -17,7 +17,7 @@ export default function Index(props) {
     <Layout>
       <HeroHeader />
       <div className="flex flex-wrap justify-center gap-4 mt-8">
-        {categories.includes('Learning') && categories.map(tag => (
+        {categories.map(tag => (
           <Category
             tag={tag}
             key={tag}
@@ -33,7 +33,7 @@ export default function Index(props) {
           </div>
           <div className="grid gap-10 lg:gap-12 sm:grid-cols-2">
             {filteredArticles.map(article => (
-              categories.includes('Learning') && <ArticleCard article={article} key={article.id} />
+              article.categories.includes('Learning') && <ArticleCard article={article} key={article.id} />
             ))}
           </div>
         </div>
@@ -51,7 +51,7 @@ export const getStaticProps = async () => {
 
   const blocks = await fetchPageBlocks(data[0].id);
 
-  const { articles, categories } = convertToArticleList(data);
+  const { articles, categories } = convertToArticleList(data, "Learning");
 
   return {
     props: {

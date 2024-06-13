@@ -37,19 +37,33 @@ const mapArticleProperties = article => {
   };
 };
 
-export const convertToArticleList = (tableData: any) => {
+export const convertToArticleList = (tableData: any, category?: string) => {
   let categories: string[] = [];
 
   const articles = tableData.map((article: any) => {
     const { properties } = article;
+    let tempCategories: string[] = [];
+
+    if(category && category == "Learning"){
+      let categoriesToAdd = ["Life Cycle Assessment", "Circular Economy", "Compost", "Waste Management", "Greenhouse Gas Emissions", "Packaging & Plastics", "Alternative Energy", "Sustainable Textile Material", "Toxic Free Ingredients", "Climate Regulations", "Safer Beauty Regulations"]
+      tempCategories.push(...categoriesToAdd)
+    }
 
     properties?.categories?.multi_select?.forEach((category: any) => {
       const { name } = category;
       if (!categories.includes(name) && name) {
-        categories.push(name);
+        tempCategories.push(name);
       }
     });
 
+    if( categories && tempCategories.includes(category)) {
+      categories.push(...tempCategories)
+    } else if (categories && !tempCategories.includes(category)){
+      // Do nothing
+    } else {
+      categories.push(...tempCategories)
+    }
+    tempCategories = [];
     return mapArticleProperties(article);
   });
 
