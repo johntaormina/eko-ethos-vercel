@@ -136,6 +136,19 @@ export function renderBlocks(block) {
       return (
         <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       );
+    case 'embed':
+      return (
+        <div className="relative overflow-hidden">
+          <iframe
+            className="w-full h-96 md:h-[680px]"
+            src={value.url}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          />
+        </div>
+      );
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type
