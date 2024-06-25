@@ -149,6 +149,17 @@ export function renderBlocks(block) {
           />
         </div>
       );
+    case 'pdf':
+      return (
+        <div className="relative overflow-hidden">
+          <iframe
+            className="w-full h-full md:h-[680px]"
+            src={value.file.url}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      );
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type
