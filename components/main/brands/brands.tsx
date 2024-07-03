@@ -4,6 +4,7 @@ export interface Brand {
     description: string;
     link: string;
     categories: string[];
+    attributes?: string[];
 }
 
 export const Brands: Brand[] = [
@@ -13,6 +14,7 @@ export const Brands: Brand[] = [
         description: "Clean, comfy & clinically tested makeup that improves the quality of bare skin. Kosas offers a wide range of products for a natural and radiant look.",
         link: "https://www.kosas.com",
         categories: ["Makeup"],
+        attributes: ["Up Cycled Packaging", "Plant-based Ingredients"],
     },
     {
         name: "ILIA",
@@ -20,6 +22,7 @@ export const Brands: Brand[] = [
         description: "ILIA is a clean beauty brand that focuses on creating high-performance makeup products with natural and organic ingredients. Their products are cruelty-free and offer a wide range of shades and finishes.",
         link: "https://www.iliabeauty.com",
         categories: ["Makeup"],
+        attributes: ["Plant-based Ingredients"]
     },
     {
         name: "Kitsch",
@@ -27,6 +30,7 @@ export const Brands: Brand[] = [
         description: "Kitsch offers a range of skincare products that are designed to nourish and hydrate the skin. Their products are made with natural ingredients and are free from harmful chemicals.",
         link: "https://www.mykitsch.com",
         categories: ["Skincare"],
+        attributes: ["Recycled packaging", "Recycled material"]
     },
     {
         name: "Weleda",
@@ -34,6 +38,7 @@ export const Brands: Brand[] = [
         description: "Weleda is a trusted brand that offers a wide range of skincare products made with natural and organic ingredients. Their products are known for their effectiveness and sustainability.",
         link: "https://www.weleda.com",
         categories: ["Skincare"],
+        attributes: ["Biodegradable packaging"]
     },
     {
         name: "Avalon Organics",
@@ -43,11 +48,12 @@ export const Brands: Brand[] = [
         categories: ["Haircare"],
     },
     {
-        name: "Dr Bronzer’s",
+        name: "Dr Bronners",
         logo: "/assets/brands/dr-bronners.png",
         description: "Dr. Bronner's offers a range of body care products that are made with plant-based ingredients. Their products are cruelty-free and environmentally friendly.",
         link: "https://www.drbronner.com",
-        categories: ["Bodycare", "Plant-based Ingredients"],
+        categories: ["Bodycare"],
+        attributes: ["Plant-based Ingredients"]
     },
     {
         name: "Seed",

@@ -41,7 +41,7 @@ const Index = () => {
         if (selectedTags.length === 0) {
             return true;
         }
-        return brand.categories.some((tag) => selectedTags.includes(tag));
+        return brand.categories.some((tag) => selectedTags.includes(tag)) || brand.attributes?.some((tag) => selectedTags.includes(tag));
     });
 
     const BrandBoxesEmpty = () => {
@@ -60,6 +60,22 @@ const Index = () => {
             <div className="w-1/4 bg-white p-2 shadow rounded-lg ">
                 <h2 className="text-xl font-bold mb-4">Categories</h2>
                 {Brands.flatMap((brand) => brand.categories).filter((tag, index, self) => self.indexOf(tag) === index).map((tag) => (
+                    <div key={tag} className="flex items-center ml-6">
+                        <input
+                            type="checkbox"
+                            id={tag}
+                            className="mr-2"
+                            checked={selectedTags.includes(tag)}
+                            onChange={() => handleTagClick(tag)}
+                        />
+                        <label htmlFor={tag} className={`text-lg ${selectedTags.includes(tag) ? "font-bold" : ""}`}>
+                            {tag}
+                        </label>
+                    </div>
+                ))}
+
+                <h2 className="text-xl font-bold mb-4 mt-10">Attributes</h2>
+                {Brands.flatMap((brand) => brand.attributes || []).filter((tag, index, self) => self.indexOf(tag) === index).map((tag) => (
                     <div key={tag} className="flex items-center ml-6">
                         <input
                             type="checkbox"
@@ -126,7 +142,15 @@ const Index = () => {
                                 {brand.categories.map((tag, index) => (
                                     <span
                                         key={index}
-                                        className="bg-gray-200 text-black-600 text-xs px-2 py-1 mr-2"
+                                        className="bg-gray-200 font-bold text-black-600 text-xs px-2 py-1 mr-2"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                                {brand.attributes?.map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="bg-emerald-100 font-bold	text-black-600 text-xs px-2 py-1 mr-2"
                                     >
                                         {tag}
                                     </span>
